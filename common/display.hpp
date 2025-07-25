@@ -7,8 +7,8 @@ class Display {
   public:
     Display(const uint8_t width, const uint8_t height);
     Display(const uint8_t width, const uint8_t height, bool isRGB);
-    Display(std::string name, const uint8_t width, const uint8_t height);
-    Display(std::string name, const uint8_t width, const uint8_t height,
+    Display(const std::string &name, const uint8_t width, const uint8_t height);
+    Display(const std::string &name, const uint8_t width, const uint8_t height,
             bool isRGB);
     ~Display();
 

@@ -16,7 +16,7 @@ Display::Display(const uint8_t width, const uint8_t height, const bool isRGB) {
     this->calcPixelCount();
 }
 
-Display::Display(const std::string name, const uint8_t width,
+Display::Display(const std::string &name, const uint8_t width,
                  const uint8_t height) {
     this->name = name;
     this->width = width;
@@ -24,7 +24,7 @@ Display::Display(const std::string name, const uint8_t width,
     this->calcPixelCount();
 }
 
-Display::Display(const std::string name, const uint8_t width,
+Display::Display(const std::string &name, const uint8_t width,
                  const uint8_t height, const bool isRGB) {
     this->name = name;
     this->width = width;
