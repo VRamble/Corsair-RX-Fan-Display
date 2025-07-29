@@ -24,7 +24,7 @@ BIN := $(BUILD_DIR)/CORFD
 GUI_SRCS = $(wildcard $(GUI_SRC_DIR)/*.cpp)
 COMMON_SRCS = $(wildcard $(COMMON_SRC_DIR)/*.cpp)
 SERIAL_SRCS = $(wildcard $(SERIAL_SRC_DIR)/*.cpp)
-SRCS = $(wildcard $(SRC_DIR)/*.cpp) $(GUI_SRCS) $(COMMON_SRCS) $(SERIAL_SRCS)
+SRCS = $(wildcard $(SRC_DIR)/*.cpp) $(GUI_SRCS) $(COMMON_SRCS) #$(SERIAL_SRCS)
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 .PHONY: all clean run
@@ -48,9 +48,9 @@ $(BUILD_DIR)/%.o: $(COMMON_SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) $(LIBS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(SERIAL_SRC_DIR)/%.cpp
-	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) $(LIBS) -c $< -o $@
+# $(BUILD_DIR)/%.o: $(SERIAL_SRC_DIR)/%.cpp
+# 	@mkdir -p $(dir $@)
+# 	$(CXX) $(CXXFLAGS) $(LIBS) -c $< -o $@
 
 run: $(BIN)
 	./$(BIN)

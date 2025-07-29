@@ -9,9 +9,8 @@ class EventLoop {
 
     bool pollEvents();
     bool shouldQuit() const;
+    void handleEvent(SDL_Event &e);
 
   private:
     bool quit = false;
-
-    void handleEvent(SDL_Event &e);
 };

@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <string>
 
+uint16_t Display::pixel_count = 0;
+
 Display::Display(const uint8_t width, const uint8_t height) {
     this->width = width;
     this->height = height;

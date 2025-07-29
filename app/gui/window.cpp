@@ -29,6 +29,11 @@ Window::Window(const char *title, const unsigned int width,
                   << std::endl;
         return;
     }
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, width, height, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
     SDL_GL_SetSwapInterval(1); // Enables V-Sync
     initialized = true;
