@@ -1,5 +1,6 @@
 #include "button.hpp"
 #include "widget.hpp"
+#include <GL/gl.h>
 #include <SDL2/SDL_opengl.h>
 
 Button::Button(int x, int y, int w, int h, const std::string &text)
@@ -57,13 +58,14 @@ void Button::render() {
     glVertex2f(x + width, y + height);
     glVertex2f(x, y + height);
     glEnd();
+
+    glDisable(GL_BLEND);
 }
 
 void Button::handleEvent(const SDL_Event &e) {
     if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
         int mx = e.button.x;
         int my = e.button.y;
-        printf("Button clicked at (%d, %d)\n", mx, my);
         if (mx >= x && mx < x + width && my >= y && my < y + height) {
             printf("Button contains click at (%d, %d)\n", mx, my);
             if (onClick) {

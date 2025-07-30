@@ -1,6 +1,7 @@
 #include "window.hpp"
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_video.h>
 #include <iostream>
 
@@ -10,6 +11,12 @@ Window::Window(const char *title, const unsigned int width,
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL_Init failed: " << SDL_GetError() << std::endl;
+        initialized = false;
+        return;
+    }
+
+    if (TTF_Init() == -1) {
+        printf("TTF_Init: %s\n", TTF_GetError());
         initialized = false;
         return;
     }
@@ -47,6 +54,7 @@ Window::~Window() {
     if (window)
         SDL_DestroyWindow(window);
     SDL_Quit();
+    TTF_Quit();
 }
 
 void Window::clear() {

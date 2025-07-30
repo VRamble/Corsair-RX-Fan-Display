@@ -12,7 +12,7 @@ CXXFLAGS ?= $(PKG_CFLAGS)
 CFLAGS = $(CXXFLAGS)
 LDFLAGS = -lstdc++ $(PKG_CFLAGS)
 LINUX_GL_LIBS = -lGL
-LIBS = $(LINUX_GL_LIBS) -ldl `sdl2-config --libs`
+LIBS = $(LINUX_GL_LIBS) -ldl -lSDL2_ttf `sdl2-config --libs`
 
 
 BUILD_DIR = ../build/app
