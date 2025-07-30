@@ -1,4 +1,4 @@
-CXX = g++
+CXX ?= g++
 
 PKG_CFLAGS = $(shell pkg-config --cflags sdl2)
 PKG_LDFLAGS = $(shell pkg-config --libs sdl2)
@@ -6,12 +6,13 @@ PKG_LDFLAGS = $(shell pkg-config --libs sdl2)
 GUI_DIR = gui
 SERIAL_DIR = serial
 COMMON_DIR = ../common
+EXTERNAL_LIBS = ../lib/external
 
-CXXFLAGS = -std=c++20 -g -Wformat -Wall -Wextra -I$(GUI_DIR) -I$(SERIAL_DIR) -I$(COMMON_DIR) $(PKG_CFLAGS)
+CXXFLAGS += $(PKG_CFLAGS)
 CFLAGS = $(CXXFLAGS)
 LDFLAGS = -lstdc++ $(PKG_CFLAGS)
 LINUX_GL_LIBS = -lGL
-LIBS = $(LINUX_GL_LIBS) -ldl `sdl2-config --libs`
+LIBS = $(LINUX_GL_LIBS) -ldl -lSDL2_ttf `sdl2-config --libs`
 
 
 BUILD_DIR = ../build/app
@@ -24,7 +25,7 @@ BIN := $(BUILD_DIR)/CORFD
 GUI_SRCS = $(wildcard $(GUI_SRC_DIR)/*.cpp)
 COMMON_SRCS = $(wildcard $(COMMON_SRC_DIR)/*.cpp)
 SERIAL_SRCS = $(wildcard $(SERIAL_SRC_DIR)/*.cpp)
-SRCS = $(wildcard $(SRC_DIR)/*.cpp) $(GUI_SRCS) $(COMMON_SRCS) $(SERIAL_SRCS)
+SRCS = $(wildcard $(SRC_DIR)/*.cpp) $(GUI_SRCS) $(COMMON_SRCS) # $(SERIAL_SRCS)
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 .PHONY: all clean run
