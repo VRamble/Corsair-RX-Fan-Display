@@ -35,6 +35,8 @@ Window::Window(const char *title, const unsigned int width,
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+    glDisable(GL_DEPTH_TEST);
+
     SDL_GL_SetSwapInterval(1); // Enables V-Sync
     initialized = true;
 }
@@ -47,7 +49,10 @@ Window::~Window() {
     SDL_Quit();
 }
 
-void Window::clear() { glClear(GL_COLOR_BUFFER_BIT); }
+void Window::clear() {
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
 void Window::swap_buffers() { SDL_GL_SwapWindow(window); }
 
 bool Window::isInitialized() const { return initialized; }

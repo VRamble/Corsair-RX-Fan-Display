@@ -1,5 +1,6 @@
 
 #include "gui_manager.hpp"
+#include <SDL2/SDL_opengl.h>
 
 void GuiManager::add(Widget *w) { widgets.push_back(w); }
 

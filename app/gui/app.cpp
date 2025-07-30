@@ -3,6 +3,7 @@
 #include "event_loop.hpp"
 #include "gui_manager.hpp"
 #include "window.hpp"
+#include <unistd.h>
 
 namespace gui {
 App::App() : window("App", 960, 720) {
@@ -20,7 +21,8 @@ App::~App() {
 int App::run() {
 
     GuiManager gui;
-    Button *button = new Button(100, 100, 200, 50, "Test");
+    Button *button = new Button(100, 100, 200, 50, "Test",
+                                "gui/assets/waves-24.png", 24, 24);
     button->onClick = []() {
         printf("Button Pressed\n");
         fflush(stdout);

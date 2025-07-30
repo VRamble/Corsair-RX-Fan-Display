@@ -5,10 +5,14 @@ NUM_JOBS = $(shell nproc)
 
 BUILD_DIR = build
 
+INCLUDE_PATHS = -I./app/gui -I.app/serial -I./common -I./lib/external
+
+CXXFLAGS = -std=c++20 -g -Wformat -Wall -Wextra $(INCLUDE_PATHS) 
+
 all: 
 	@echo "Running with $(NUM_JOBS) threads"
-	@$(MAKE) -C app -j$(NUM_JOBS)
-	@$(MAKE) -C firmware -j$(NUM_JOBS)
+	@$(MAKE) -C app -j$(NUM_JOBS) CXXFLAGS="$(CXXFLAGS)"
+	@$(MAKE) -C firmware -j$(NUM_JOBS) CXXFLAGS="$(CXXFLAGS)"
 
 app:
 	$(MAKE) -C app
