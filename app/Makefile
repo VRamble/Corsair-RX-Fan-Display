@@ -8,7 +8,7 @@ SERIAL_DIR = serial
 COMMON_DIR = ../common
 EXTERNAL_LIBS = ../lib/external
 
-CXXFLAGS ?= $(PKG_CFLAGS)
+CXXFLAGS += $(PKG_CFLAGS)
 CFLAGS = $(CXXFLAGS)
 LDFLAGS = -lstdc++ $(PKG_CFLAGS)
 LINUX_GL_LIBS = -lGL

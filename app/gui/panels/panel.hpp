@@ -4,6 +4,8 @@
 
 #include <vector>
 
+class Widget;
+
 class Panel : public Widget {
   public:
     Panel(int x, int y, int w, int h);

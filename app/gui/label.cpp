@@ -7,8 +7,8 @@
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_ttf.h>
 
-Label::Label(int x, int y, const std::string &text, int fontSize)
-    : Widget(x, y, 0, 0), text(text), fontSize(fontSize) {
+Label::Label(int x, int y, const std::string &text, const std::string fontPath, int fontSize)
+    : Widget(x, y, 0, 0), text(text), fontPath(fontPath), fontSize(fontSize) {
 
     font = TTF_OpenFont(fontPath.c_str(), fontSize);
     if (!font) {
