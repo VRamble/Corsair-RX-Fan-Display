@@ -35,8 +35,10 @@ void Button::render() {
         glBindTexture(GL_TEXTURE_2D, iconTexture);
         glColor3f(1.0f, 1.0f, 1.0f);
 
-        float iconX = x + 10;
-        float iconY = y + 10;
+        float iconX = x + (width - iconWidth) / 2;
+        float iconY = y + (height - iconHeight) / 2;
+        if (iconX < x) iconX = x;
+        if (iconY < y) iconY = y;
 
         glBegin(GL_QUADS);
         glTexCoord2f(0, 0);

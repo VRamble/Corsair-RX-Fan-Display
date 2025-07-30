@@ -8,6 +8,8 @@
 #include <limits.h>
 #include <unistd.h>
 
+#include "panels/lighting_panel.hpp"
+
 namespace gui {
 App::App() : window("App", 960, 720) {
     // init logic
@@ -40,26 +42,10 @@ std::string App::getExecutablePath() {
 
 int App::run() {
 
-    std::string executablePath = getExecutablePath();
+    const std::string executablePath = getExecutablePath();
     GuiManager gui;
-    Panel *panel = new Panel(50, 50, 400, 400);
-    Label *label = new Label(50, 50, "Test Label",
-                             getExecutablePath() +
-                                 "/gui/assets/Saira-VariableFont_wdth,wght.ttf",
-                             64);
-    // gui.add(label);
-
-    Button *button =
-        new Button(100, 200, 200, 50, "Test",
-                   executablePath + "/gui/assets/waves-24.png", 24, 24);
-    button->onClick = []() {
-        printf("Button Pressed\n");
-        fflush(stdout);
-    };
-    // gui.add(button);
-    panel->add(label);
-    panel->add(button);
-    gui.add(panel);
+    auto lightingPanel = new LightingPanel(0, 0, 240, 360, executablePath);
+    gui.add(lightingPanel);
 
     bool running = true;
     EventLoop event_loop = EventLoop();

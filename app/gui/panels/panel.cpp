@@ -1,8 +1,12 @@
 #include "panel.hpp"
+
+#include <string>
 #include <GL/gl.h>
 #include <SDL2/SDL_opengl.h>
 
 Panel::Panel(int x, int y, int w, int h) : Widget(x, y, w, h) {}
+
+Panel::Panel(int x, int y, int w, int h, const std::string &fontPath) : Widget(x, y, w, h), fontPath(fontPath) {}
 
 void Panel::add(Widget *w) { children.push_back(w); }
 

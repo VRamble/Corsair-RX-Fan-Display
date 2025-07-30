@@ -13,7 +13,7 @@ class Label : public Widget {
     std::string text;
     int fontSize;
 
-    Label(int x, int y, const std::string &text, const std::string fontPath, int fontSize);
+    Label(int x, int y, const std::string &text, const std::string &fontPath, int fontSize);
     ~Label();
     void render() override;
     void handleEvent(const SDL_Event &e) override;
