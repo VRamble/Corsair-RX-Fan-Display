@@ -11,11 +11,18 @@ As of 7/30/2025, the only supported way to show images is through the python scr
 Current Display -> Arduino Nano Pinout:
 
 GND -> GND
+
 VCC + BLK -> 3.3V
+
 SCL -> D13
+
 SDA -> D11
+
 RES -> D8
+
 DC -> D9
+
 CS -> D10
+
 
 This software is in active development, and will change rapidly.
